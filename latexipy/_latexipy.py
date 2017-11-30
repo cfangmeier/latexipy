@@ -282,6 +282,17 @@ def save_figure(filename, directory, exts, mkdir=True,
 
 
 @contextmanager
+def mem_figure(file_, ext='png', size=None):
+    if size is None:
+        size = figure_size()
+    logger.info('  Plotting...')
+    yield
+    plt.gcf().set_size_inches(*size)
+    plt.savefig(file_, ext=ext)
+    plt.close()
+
+
+@contextmanager
 def figure(filename, *, directory='img', exts=['pgf', 'png'], size=None,
            mkdir=True):
     '''
