@@ -245,7 +245,7 @@ def save_figure(filename, directory, exts, mkdir=True,
         logger.info(f'Saving {filename}...  ')
 
     try:
-        plt.tight_layout(0)
+        plt.tight_layout()
     except ValueError as e:
         warnings.warn('No figures to save.')
 
